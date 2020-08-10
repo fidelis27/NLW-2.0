@@ -45,7 +45,7 @@ An online and completely free event that will help you take the next step in you
 Online teaching platform made with React.js and React Native using Typescript during the NLW (Next Level Week) #02
 
 <h1 align="center">
-    <img alt="Example" title="Example" src=".github/proffy.jpg" width="500px" />
+    <img alt="Example" title="Example" src=".github/proffy2.jpg" width="500px" />
 </h1>
 
 
