@@ -1,6 +1,7 @@
 [build]
   command = "npm run build"
-  publish="build"
-  base = "web"
+  publish="/opt/build/repo/web/build"
+  base = "/opt/build/repo/web"
+  commandOrigin = "config"
 
 
