@@ -1,6 +1,10 @@
 [build]
-  command: npm run build
+  command = "npm run build"
+  
+  base = "web"
   commandOrigin: config
-  publish: /opt/build/repo/web/build
+  publish: /opt/build/repo/web/build  
+
+     
 
 
