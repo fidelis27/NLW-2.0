@@ -1,7 +1,7 @@
 [build]
   command = "npm run build"
-  publish="/web/build"
+  publish="/build"
   base = "/web"
-  commandOrigin = "config"
+  commandOrigin : config
 
 
