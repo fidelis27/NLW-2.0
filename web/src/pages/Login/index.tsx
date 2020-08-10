@@ -5,7 +5,7 @@ import Input from '../../components/Input';
 
 import logoImg from '../../assets/images/logo.svg'
 
-import './style.css';
+/* import './styles.css'; */
 import { Link } from 'react-router-dom';
 
 function Login() {
@@ -27,7 +27,7 @@ function Login() {
                 <div className="login-logo-container">
                     <div className="login-logo">
                         <img src={logoImg} alt="Proffy"/>
-                        <h2>Your online study platform.</h2>
+                        <h2>Sua plataforma de estudos online.</h2>
                     </div>
                 </div>
                 <div className="login-form">
@@ -36,13 +36,15 @@ function Login() {
                                 <header>
                                     <legend>Login</legend>
                                     <Link to='/signup' className="signup-button">
-                                       <label>Sign Up</label>
+                                       <label>
+Inscrever-se</label>
                                     </Link>
                                 </header>
                                 <div className="input-container">
                                     <Input
                                         name="email"
-                                        placeholder="example@youremail.com"
+                                        label="email"
+                                        placeholder="example@seuemail.com"
                                         value={email}
                                         onChange={(e) => {
                                             setEmail(e.target.value)
@@ -50,7 +52,8 @@ function Login() {
                                         />
                                     <Input
                                         name="password"
-                                        placeholder="password"
+                                        label="senha"
+                                        placeholder="sua senha"
                                         type="password"
                                         value={password}
                                         onChange={(e) => {
@@ -61,10 +64,10 @@ function Login() {
                                 <footer>
                                     <div>
                                         <input onChange={handleToggleRemember} type="checkbox" name="remember"/>
-                                        <label htmlFor="remember">Remember</label>
+                                        <label htmlFor="remember">Lembrar</label>
                                     </div>
                                     <Link to='/signup' className="signup-button">
-                                       <label>Forgot my password</label>
+                                       <label>Esqueceu sua senha?</label>
                                     </Link>
                                 </footer>
                                 <button type="submit">Login</button>
