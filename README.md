@@ -75,7 +75,7 @@ From your command line:
 $ git clone https://github.com/fidelis27/NLW-2.0
 
 # Go into the repository
-$ cd NLW-2.0/backend
+$ cd NLW-2.0/server
 
 # Install dependencies
 $ yarn install
