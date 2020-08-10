@@ -25,8 +25,8 @@
   --color-primary-lighter: #C09F80;
   --color-primary-light: #c29872;
   --color-primary: #D7CEC7;
-  --color-primary-dark: #774DD6;
-  --color-primary-darker: #6842C2;
+  --color-primary-dark: #6e3641;
+  --color-primary-darker: #301117;
   --color-secundary: #565656;
   --color-secundary-dark: #313131;
   --color-title-in-primary: #FFFFFF;
@@ -36,6 +36,7 @@
   --color-text-base: #722f3b;
   --color-line-in-white: #E6E6F0;
   --color-input-background: #F8F8FC;
+  --color-select-background: #F8F8FC;
   --color-button-text: #FFFFFF;
   --color-box-base: #FFFFFF;
   --color-box-footer: #FAFAFC;

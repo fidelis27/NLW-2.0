@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
 
@@ -7,9 +7,23 @@ import landingImg from '../../assets/images/proffy.jpg';
 import studyIcon from '../../assets/images/icons/study.svg';
 import giveClassesIcon from '../../assets/images/icons/give-classes.svg';
 
+import api from '../../services/api';
+
 import './styles.css';
 
 const Landing: React.FC = () => {
+  const [totalConnections, setTotalConnections] = useState(0);
+
+  useEffect(() => {
+    async function loadConnections(): Promise<void> {
+      await api.get('connections').then((res) => {
+        const { total } = res.data;
+        setTotalConnections(total);
+      });
+    }
+    loadConnections();
+  }, []);
+
   return (
     <div id="page-landing">
       <div id="page-landing-content" className="container">
@@ -33,7 +47,7 @@ const Landing: React.FC = () => {
         </div>
 
         <span className="total-connections">
-          Total de 200 conexões já realizadas
+          Total de {totalConnections} conexões já realizadas
           <FaHeart size={30} color="#ac495b" />
         </span>
       </div>
