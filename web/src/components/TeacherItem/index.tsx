@@ -19,12 +19,11 @@ interface TeacherItemProps {
 }
 
 const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
-
-  function createNewConnection (){
+  function createNewConnection() {
     api.post('connections', {
-        user_id: teacher.id,
-    })
-}
+      user_id: teacher.id,
+    });
+  }
   return (
     <article className="teacher-item">
       <header>
@@ -41,14 +40,14 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
           <strong>R$ {teacher.cost}</strong>
         </p>
         <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={createNewConnection}
-                    href={`https://wa.me/${teacher.whatsapp}?text=Hello%20There`}
-                >
-                    <img src={whatsapp} alt="Whatsapp"/>
-                    Entrar em contato
-                </a>
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={createNewConnection}
+          href={`https://wa.me/${teacher.whatsapp}?text=Hello%20There`}
+        >
+          <img src={whatsapp} alt="Whatsapp" />
+          Entrar em contato
+        </a>
       </footer>
     </article>
   );

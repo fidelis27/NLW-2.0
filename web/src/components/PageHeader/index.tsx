@@ -21,6 +21,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
         <Link to="/">
           <FaArrowLeft size={24} color="#565656" /> voltar
         </Link>
+
         <img src={logoImg} alt="Proffy" />
       </div>
 

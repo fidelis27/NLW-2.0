@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center"> 
-	:construction: NextLevelWeek 1.0 🚀 In progress.. :construction:
+	:construction: NextLevelWeek 2.0 🚀 In progress.. :construction:
 </h4>
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/fidelis27/NLW-2.0?color=%2304D361">

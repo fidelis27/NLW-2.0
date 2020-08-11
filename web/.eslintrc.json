@@ -33,6 +33,8 @@
       "prettier/prettier":"error",
       "react-hooks/rules-of-hooks":"error",
       "react/jsx-one-expression-per-line":"off",
+      "react/jsx-props-no-spreading":"off",
+      "react/props-types": "off",
       "react-hooks/exhaustive-deps":"warn",
       "react/jsx-filename-extension":[1, {"extensions":[".tsx"] }],
       "import/prefer-default-export": "off",
@@ -40,7 +42,7 @@
       "jsx-a11y/label-has-associated-control":"off",
       "jsx-a11y/click-events-have-key-events":"off",
       "jsx-a11y/no-noninteractive-element-interactions":"off",
-      "react/prop-types": false,
+
       /* "@typescript-eslint/explicit-function-return-type":[
         "error", {
           "allowExpressions": false
