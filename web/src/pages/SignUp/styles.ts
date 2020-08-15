@@ -73,7 +73,9 @@ export const Logo = styled.div`
   justify-content: center;
   align-items: center;
   background-color: var(--color-primary);
-
+  img {
+    width: 70%;
+  }
   h2 {
     color: var(--color-text-in-primary);
   }
