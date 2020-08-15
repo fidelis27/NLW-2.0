@@ -5,6 +5,24 @@ export const Container = styled.div`
   height: 100vh;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  color: var(--color-text-complement);
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 5rem 12rem;
+    a {
+      margin-bottom: 6rem;
+      height: 3.2rem;
+      transition: opacity 0.2s;
+      text-decoration: none;
+      color: var(--color-text-in-primary);
+    }
+    a:hover {
+      opacity: 0.6;
+    }
+  }
 `;
 export const Title = styled.label`
   font-family: Poppins;
@@ -13,6 +31,7 @@ export const Title = styled.label`
   font-size: 36px;
   line-height: 34px;
   margin-bottom: 5rem;
+  color: var(--color-text-in-primary);
 `;
 
 export const SubTitle = styled.label`
@@ -23,23 +42,7 @@ export const SubTitle = styled.label`
   font-size: 16px;
   line-height: 26px;
   margin-bottom: 4rem;
-`;
-
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin: 5rem 12rem;
-  a {
-    margin-bottom: 6rem;
-    height: 3.2rem;
-    transition: opacity 0.2s;
-    text-decoration: none;
-    color: var(--color-primary);
-  }
-  a:hover {
-    opacity: 0.6;
-  }
+  color: var(--color-text-in-primary);
 `;
 
 export const Logo = styled.div`
@@ -48,4 +51,8 @@ export const Logo = styled.div`
   justify-content: center;
   align-items: center;
   background-color: var(--color-primary);
+
+  h2 {
+    color: var(--color-text-in-primary);
+  }
 `;

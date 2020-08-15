@@ -1,28 +1,50 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { FiLock, FiUser, FiMail } from 'react-icons/fi';
 import { FaArrowLeft } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
+import * as Yup from 'yup';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import getValidationErrors from '../../utils/getValidationErrors';
 
 import logoImg from '../../assets/images/logo.svg';
 
-import { Container, Form, Logo, Title, SubTitle } from './styles';
+import { Container, Logo, Title, SubTitle } from './styles';
 
+interface DataProps {
+  email: string;
+  password: string;
+}
 const SignUp: React.FC = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const formRef = useRef<FormHandles>(null);
+  const handleSignUp = useCallback(async (data: DataProps) => {
+    try {
+      formRef.current?.setErrors({});
+      const schema = Yup.object().shape({
+        name: Yup.string().required('Nome obrigatório'),
+        email: Yup.string()
+          .required('E-mail é obrigatório')
+          .email('Digite um e-mail válido'),
+        password: Yup.string().min(6, 'No mínimo 6 dígitos'),
+      });
 
-  function handleSingUp(e: FormEvent) {
-    e.preventDefault();
-    console.log(name, email);
-  }
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+    } catch (err) {
+      const errors = getValidationErrors(err);
+
+      formRef.current?.setErrors(errors);
+    }
+    console.log(data);
+    /*  signIn(email, password); */
+  }, []);
 
   return (
     <Container>
-      <Form onSubmit={handleSingUp}>
+      <Form onSubmit={handleSignUp} ref={formRef}>
         <Link to="/">
           <FaArrowLeft size={24} color="#565656" />
         </Link>
@@ -35,10 +57,6 @@ const SignUp: React.FC = () => {
           id="name"
           label="nome"
           placeholder="seu nome"
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
         />
         <Input
           icon={FiMail}
@@ -46,10 +64,6 @@ const SignUp: React.FC = () => {
           id="email"
           label="E-mail"
           placeholder="example@seuemail.com "
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
         />
         <Input
           icon={FiLock}
@@ -57,10 +71,6 @@ const SignUp: React.FC = () => {
           label="senha"
           placeholder="sua senha"
           type="password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
         />
         <Button type="submit">Concluir cadastro</Button>
       </Form>

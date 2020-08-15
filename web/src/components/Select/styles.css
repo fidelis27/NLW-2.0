@@ -24,6 +24,10 @@
 
 }
 
+.select-block span{
+  margin-top: 0.8rem;
+ }
+
 .select-block:focus-within::after {
   width: calc(100% - 3.2rem);
   height: 2px;
@@ -34,4 +38,10 @@
   right: 1.6rem;
   bottom: 0;
 
+}
+
+@media (min-width: 700px) {
+  .select-block  + .select-block {
+    margin-top: 0;
+  }
 }
