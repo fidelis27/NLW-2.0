@@ -66,6 +66,8 @@ export const SubTitle = styled.label`
 `;
 
 export const Logo = styled.div`
+  width: 100%;
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
