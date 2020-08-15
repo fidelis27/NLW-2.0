@@ -3,16 +3,31 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
+
   color: var(--color-text-complement);
+  @media (min-width: 700px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   form {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    margin: 5rem 12rem;
+    align-items: center;
+    padding: 4rem;
+
+    @media (min-width: 700px) {
+      padding: 3rem;
+    }
+    input {
+      width: 100%;
+    }
+
     a {
+      width: 100%;
       margin-bottom: 6rem;
       height: 3.2rem;
       transition: opacity 0.2s;
@@ -25,6 +40,7 @@ export const Container = styled.div`
   }
 `;
 export const Title = styled.label`
+  width: 100%;
   font-family: Poppins;
   font-style: normal;
   font-weight: 600;
@@ -35,7 +51,11 @@ export const Title = styled.label`
 `;
 
 export const SubTitle = styled.label`
-  max-width: 22.2rem;
+  width: 100%;
+  @media (min-width: 700px) {
+    max-width: 22.2rem;
+    align-self: flex-start;
+  }
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;

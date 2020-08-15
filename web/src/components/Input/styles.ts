@@ -5,6 +5,7 @@ interface ContainerProps {
   isFilled: boolean;
 }
 export const Container = styled.div<ContainerProps>`
+  width: 100%;
   & + div {
     margin-top: 1.4rem;
   }
@@ -72,6 +73,7 @@ export const Container = styled.div<ContainerProps>`
 `;
 
 export const InputLabel = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
 `;
