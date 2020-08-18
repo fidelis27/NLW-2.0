@@ -74,9 +74,11 @@ export const Logo = styled.div`
   align-items: center;
   background-color: var(--color-primary);
   img {
-    width: 70%;
+    padding-top: 3rem;
+    width: 90%;
   }
   h2 {
     color: var(--color-text-in-primary);
+    padding: 3rem;
   }
 `;

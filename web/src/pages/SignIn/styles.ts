@@ -11,22 +11,23 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-line-in-white);
+  margin-bottom: 2.4rem;
   a {
     text-decoration: none;
     height: 0;
-    margin-left: -10rem;
+    margin-left: 10rem;
     color: var(--color-text-complement);
   }
   h2 {
     font: 700 2.4rem Archivo;
     color: var(--color-text-title);
-    margin-bottom: 2.4rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+
     padding-bottom: 1.6rem;
-    border-bottom: 1px solid var(--color-line-in-white);
   }
 `;
 
