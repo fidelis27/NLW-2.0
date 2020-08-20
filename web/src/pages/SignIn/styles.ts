@@ -17,7 +17,6 @@ export const Header = styled.header`
   a {
     text-decoration: none;
     height: 0;
-    margin-left: 10rem;
     color: var(--color-text-complement);
   }
   h2 {

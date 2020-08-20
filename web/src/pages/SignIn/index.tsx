@@ -57,7 +57,7 @@ const SignIn: React.FC = () => {
             .email('Digite um e-mail válido'),
           password: Yup.string().min(
             6,
-            'Campo e-mail deve ter no mínimo 6 dígitos',
+            'Campo "senha" deve ter no mínimo 6 dígitos',
           ),
         });
 

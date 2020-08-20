@@ -15,9 +15,17 @@ export const Container = styled.div`
 
 export const LandingContent = styled.div`
   display: flex;
+  flex-direction: column;
+
+  @media (min-width: 700px) {
+    flex-direction: row;
+  }
 
   img {
-    width: 50rem;
+    width: 30rem;
+    @media (min-width: 700px) {
+      width: 50rem;
+    }
   }
 `;
 
@@ -26,25 +34,34 @@ export const LogoContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 3.2rem;
+  margin-top: 2.2rem;
   img {
-    height: 30rem;
+    @media (min-width: 700px) {
+      height: 30rem;
+    }
+    height: 10rem;
   }
   h2 {
     font-weight: 500;
     font-size: 2.4rem;
-    line-height: 4.6rem;
-    margin-top: -8rem;
+    line-height: 3.6rem;
+    margin-top: 2rem;
+    @media (min-width: 700px) {
+      margin-top: -8rem;
+    }
     width: 30rem;
   }
 `;
 export const Header = styled.header`
   width: 100%;
-  padding: 0 20rem;
+  @media (min-width: 700px) {
+    padding: 0 20rem;
+  }
+  padding: 0 5rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-top: 3.2rem;
+  margin-top: 2.2rem;
   button {
     border: 0;
     background: var(--color-primary);
@@ -69,18 +86,24 @@ export const UserInfo = styled.div`
 `;
 
 export const Footer = styled.footer`
-  display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0 10rem;
-  margin-top: 3.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (min-width: 700px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10rem;
+    margin-top: 2.2rem;
+  }
 
   p {
     width: 16rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: 2.2rem;
   }
   span {
     display: flex;
@@ -88,6 +111,7 @@ export const Footer = styled.footer`
     justify-content: center;
     text-align: center;
     width: 20rem;
+    margin-top: 2.2rem;
     svg {
       margin-left: 1.2rem;
     }
@@ -96,11 +120,17 @@ export const Footer = styled.footer`
 
 export const ButtonsContainer = styled.div`
   display: flex;
+
   justify-content: center;
+
   margin: 3.2rem 2rem;
   a {
-    width: 30rem;
-    height: 8.4rem;
+    @media (min-width: 700px) {
+      width: 30rem;
+      height: 8.4rem;
+    }
+    width: 20rem;
+    height: 6.4rem;
     border-radius: 0.8rem;
     margin-right: 1.6rem;
     font: 700 2rem Archivo;
@@ -117,7 +147,7 @@ export const ButtonsContainer = styled.div`
     }
     img {
       width: 4rem;
-      margin-right: 2.4rem;
+      margin: 0 2rem;
     }
   }
   a.study {

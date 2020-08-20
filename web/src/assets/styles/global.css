@@ -40,6 +40,9 @@
   --color-button-text: #FFFFFF;
   --color-box-base: #FFFFFF;
   --color-box-footer: #FAFAFC;
+  --color-error: #c53030;
+  --color-focused:#483D8B;
+  --color-filled:#228B22;
 
   font-size: 60%;
 }

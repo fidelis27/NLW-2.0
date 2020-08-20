@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 interface ContainerProps {
   isFocused: boolean;
   isFilled: boolean;
+  isErrored: boolean;
 }
 export const Container = styled.div<ContainerProps>`
   width: 100%;
@@ -15,13 +16,13 @@ export const Container = styled.div<ContainerProps>`
     ${(props) =>
       props.isFocused &&
       css`
-        color: var(--color-text-in-primary);
+        color: var(--color-focused);
         font-weight: bold;
       `}
     ${(props) =>
       props.isFilled &&
       css`
-        color: var(--color-text-in-primary);
+        color: var(--color-filled);
         font-weight: bold;
       `}
   }
@@ -36,16 +37,26 @@ export const Container = styled.div<ContainerProps>`
     outline: 0;
     padding: 0 1.6rem;
     font: 1.6rem Archivo;
+    color: var(--color-focused);
 
+    ${(props) =>
+      props.isErrored &&
+      css`
+        border-color: var(--color-error);
+      `};
     ${(props) =>
       props.isFocused &&
       css`
-        border: 1px solid var(--color-text-in-primary);
-        color: var(--color-text-in-primary);
+        border: 1px solid var(--color-focused);
       `}
-  }
+    ${(props) =>
+      props.isFilled &&
+      css`
+        border-color: var(--color-filled);
+        color: var(--color-filled);
+      `}
 
-  /*  :focus-within::after {
+      /*  :focus-within::after {
     width: calc(100% - 3.2rem);
     height: 2px;
     content: '';
@@ -55,6 +66,7 @@ export const Container = styled.div<ContainerProps>`
     right: 1.6rem;
     bottom: 0;
   } */
+  }
 
   svg {
     color: var(--color-text-complement);
@@ -62,12 +74,12 @@ export const Container = styled.div<ContainerProps>`
     ${(props) =>
       props.isFocused &&
       css`
-        color: var(--color-text-in-primary);
+        color: var(--color-focused);
       `}
     ${(props) =>
       props.isFilled &&
       css`
-        color: var(--color-text-in-primary);
+        color: var(--color-filled);
       `}
   }
 `;
@@ -79,5 +91,5 @@ export const InputLabel = styled.div`
 `;
 
 export const ErrorMessage = styled.span`
-  color: var(--color-text-in-primary);
+  color: var(--color-error);
 `;
