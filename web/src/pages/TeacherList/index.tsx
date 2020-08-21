@@ -48,6 +48,7 @@ const TeacherList: React.FC = () => {
         time,
       },
     });
+    console.log(response.data);
 
     setTeachers(response.data);
   }, []);

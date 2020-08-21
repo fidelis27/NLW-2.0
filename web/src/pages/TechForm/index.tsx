@@ -1,7 +1,9 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import { Form } from '@unform/web';
+import * as Yup from 'yup';
 import { FiAlertOctagon } from 'react-icons/fi';
+import { FormHandles } from '@unform/core';
 import PageHeader from '../../components/PageHeader';
 
 import './styles.css';
@@ -9,15 +11,20 @@ import Input from '../../components/Input';
 import Textarea from '../../components/Textarea';
 import Select from '../../components/Select';
 import api from '../../services/api';
+import getValidationErrors from '../../utils/getValidationErrors';
+
+interface DataProps {
+  name: string;
+  avatar: string;
+  whatsapp: string;
+  bio: string;
+  subject: string;
+  cost: string;
+  schedule: string;
+}
 
 const TechForm: React.FC = () => {
-  const [name, setName] = useState('');
-  const [avatar, setAvatar] = useState('');
-  const [whatsapp, setWhatsapp] = useState('');
-  const [bio, setBio] = useState('');
-
-  const [subject, setSubject] = useState('');
-  const [cost, setCost] = useState('');
+  const formRef = useRef<FormHandles>(null);
   const history = useHistory();
 
   const [scheduleItems, setScheduleItems] = useState([
@@ -45,27 +52,43 @@ const TechForm: React.FC = () => {
     return setScheduleItems(updatedScheduleItems);
   }
 
-  function handleCreateClass(e: FormEvent): void {
-    e.preventDefault();
+  const handleCreateClass = useCallback(async (data: DataProps) => {
+    const { name, avatar, whatsapp, bio, subject, cost } = data;
 
-    api
-      .post('classes', {
-        name,
-        avatar,
-        whatsapp,
-        bio,
-        subject,
-        cost: Number(cost),
-        schedule: scheduleItems,
-      })
-      .then(() => {
-        alert('All done!');
-        history.push('/');
-      })
-      .catch(() => {
-        alert('Error');
+    try {
+      formRef.current?.setErrors({});
+      const schema = Yup.object().shape({
+        name: Yup.string().required('Campo "Name" é obrigatório'),
+        avatar: Yup.string().required('Campo "Avatar" é obrigatório'),
+        whatsapp: Yup.string().required('Campo "whatsapp" é obrigatório'),
+        bio: Yup.string().required('Campo "bio" é obrigatório'),
+        subject: Yup.string().required('Campo "subject" é obrigatório'),
+        cost: Yup.string().required('Campo "cost" é obrigatório'),
       });
-  }
+
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+
+      api
+        .post('classes', {
+          name,
+          avatar,
+          whatsapp,
+          bio,
+          subject,
+          cost: Number(cost),
+          schedule: scheduleItems,
+        })
+        .then(() => {
+          alert('All done!');
+          history.push('/');
+        });
+    } catch (err) {
+      const errors = getValidationErrors(err);
+      formRef.current?.setErrors(errors);
+    }
+  }, []);
 
   return (
     <div id="page-teacher-form" className="container">
@@ -74,53 +97,21 @@ const TechForm: React.FC = () => {
         description="O primeiro passo é preencher esse formulário de inscrição"
       />
       <main>
-        <form onSubmit={handleCreateClass}>
+        <Form ref={formRef} onSubmit={handleCreateClass}>
           <fieldset>
             <legend>Seus dados</legend>
-            <Input
-              label="Nome completo"
-              name="name"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
+            <Input label="Nome completo" name="name" />
 
-            <Input
-              label="Avatar"
-              name="avatar"
-              value={avatar}
-              onChange={(e) => {
-                setAvatar(e.target.value);
-              }}
-            />
+            <Input label="Avatar" name="avatar" />
 
-            <Input
-              name="whatsapp"
-              label="Whatsapp"
-              value={whatsapp}
-              onChange={(e) => {
-                setWhatsapp(e.target.value);
-              }}
-            />
-            <Textarea
-              name="bio"
-              label="Biografia"
-              value={bio}
-              onChange={(e) => {
-                setBio(e.target.value);
-              }}
-            />
+            <Input name="whatsapp" label="Whatsapp" />
+            <Textarea name="bio" label="Biografia" />
           </fieldset>
           <fieldset>
             <legend>Sobre a aula</legend>
             <Select
               name="subject"
               label="Matéria"
-              value={subject}
-              onChange={(e) => {
-                setSubject(e.target.value);
-              }}
               options={[
                 { value: 'Artes', label: 'Artes' },
                 { value: 'Bilogia', label: 'Bilogia' },
@@ -130,14 +121,7 @@ const TechForm: React.FC = () => {
                 { value: 'Física', label: 'Física' },
               ]}
             />
-            <Input
-              name="cost"
-              label="Custo da sua hora por aula"
-              value={cost}
-              onChange={(e) => {
-                setCost(e.target.value);
-              }}
-            />
+            <Input name="cost" label="Custo da sua hora por aula" />
           </fieldset>
 
           <fieldset>
@@ -166,14 +150,14 @@ const TechForm: React.FC = () => {
                     { value: '6', label: 'Sábado' },
                   ]}
                 />
+
                 <Input
                   name="from"
                   label="Das"
                   type="time"
                   value={scheduleItem.from}
                   onChange={(e) =>
-                    setScheduleItemValue(index, 'from', e.target.value)
-                  }
+                    setScheduleItemValue(index, 'from', e.target.value)}
                 />
 
                 <Input
@@ -182,7 +166,8 @@ const TechForm: React.FC = () => {
                   type="time"
                   value={scheduleItem.to}
                   onChange={(e) =>
-                    setScheduleItemValue(index, 'to', e.target.value)}
+                    setScheduleItemValue(index, 'to', e.target.value)
+                  }
                 />
               </div>
             ))}
@@ -196,7 +181,7 @@ const TechForm: React.FC = () => {
             </p>
             <button type="submit">Salvar cadastro</button>
           </footer>
-        </form>
+        </Form>
       </main>
     </div>
   );

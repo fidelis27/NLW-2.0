@@ -35,6 +35,9 @@ export const LogoContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 2.2rem;
+  @media (min-width: 700px) {
+    margin-top: 5.2rem;
+  }
   img {
     @media (min-width: 700px) {
       height: 30rem;
@@ -123,13 +126,13 @@ export const ButtonsContainer = styled.div`
 
   justify-content: center;
 
-  margin: 3.2rem 2rem;
+  margin: 3.2rem 1rem;
   a {
     @media (min-width: 700px) {
       width: 30rem;
       height: 8.4rem;
     }
-    width: 20rem;
+    width: 15rem;
     height: 6.4rem;
     border-radius: 0.8rem;
     margin-right: 1.6rem;
@@ -146,7 +149,10 @@ export const ButtonsContainer = styled.div`
       margin-right: 1.6rem;
     }
     img {
-      width: 4rem;
+      @media (min-width: 700px) {
+        width: 4rem;
+      }
+      width: 3rem;
       margin: 0 2rem;
     }
   }
