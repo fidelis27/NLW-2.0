@@ -132,7 +132,8 @@ export const ButtonsContainer = styled.div`
       width: 30rem;
       height: 8.4rem;
     }
-    width: 15rem;
+    padding: 0 2rem;
+    width: 20rem;
     height: 6.4rem;
     border-radius: 0.8rem;
     margin-right: 1.6rem;
@@ -151,6 +152,7 @@ export const ButtonsContainer = styled.div`
     img {
       @media (min-width: 700px) {
         width: 4rem;
+        margin: 0 1rem;
       }
       width: 3rem;
       margin: 0 2rem;
