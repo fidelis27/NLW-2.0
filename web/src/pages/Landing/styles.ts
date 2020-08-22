@@ -133,7 +133,7 @@ export const ButtonsContainer = styled.div`
       height: 8.4rem;
     }
     padding: 0 2rem;
-    width: 20rem;
+    width: 18rem;
     height: 6.4rem;
     border-radius: 0.8rem;
     margin-right: 1.6rem;
