@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FaHeart, FaSignOutAlt } from 'react-icons/fa';
 
 import logoImg from '../../assets/images/logo.svg';
@@ -17,17 +17,17 @@ import {
   UserInfo,
   ButtonsContainer,
 } from './styles';
-import { useAuth } from '../../contexts/auth';
-/*
-import './styles.css'; */
+import { useAuth } from '../../hooks/auth';
 
-const ErrorAuth: React.FC = () => {
+const Landing: React.FC = () => {
   const [totalConnections, setTotalConnections] = useState(0);
+  const history = useHistory();
 
   const { signOut, user } = useAuth();
 
   function handleSignOut() {
     signOut();
+    history.push('/');
   }
 
   useEffect(() => {
@@ -45,10 +45,13 @@ const ErrorAuth: React.FC = () => {
       <Header>
         <UserInfo>
           <img
-            src="https://avatars3.githubusercontent.com/u/45233696?s=460&u=3d6e00bcaf41ebc95a6affb75f4a5f1988662df2&v=47"
+            src={`http://localhost:3333/image/${user.avatar}`}
             alt="profile"
           />
-          <span>{user?.email}</span>
+          <Link to="/profile">
+            <p>Meu Perfil</p>
+            <span>{user?.name}</span>
+          </Link>
         </UserInfo>
         <button type="button" onClick={handleSignOut}>
           Sair
@@ -88,4 +91,4 @@ const ErrorAuth: React.FC = () => {
   );
 };
 
-export default ErrorAuth;
+export default Landing;

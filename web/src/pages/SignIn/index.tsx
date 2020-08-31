@@ -1,10 +1,11 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useCallback } from 'react';
 import { FiLock, FiMail } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { FormHandles } from '@unform/core';
-import { useAuth } from '../../contexts/auth';
+import { useAuth } from '../../hooks/auth';
+import { useToast } from '../../hooks/toast';
 import getValidationErrors from '../../utils/getValidationErrors';
 
 import Button from '../../components/Button';
@@ -28,24 +29,10 @@ interface DataProps {
 
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const history = useHistory();
 
-  const { signIn, handleToggleRemember } = useAuth();
-
-  useEffect(() => {
-    async function loadStoragedData() {
-      const storagedUser = await localStorage.getItem('@proffy:userRemember');
-
-      if (storagedUser) {
-        const User = JSON.parse(storagedUser);
-
-        formRef.current?.setFieldValue('email', User.email);
-        formRef.current?.setFieldValue('password', User.password);
-        handleToggleRemember();
-      }
-    }
-
-    loadStoragedData();
-  }, [handleToggleRemember]);
+  const { signIn } = useAuth();
+  const { addToast } = useToast();
 
   const handleSignIn = useCallback(
     async (data: DataProps) => {
@@ -64,18 +51,29 @@ const SignIn: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
-        const getEmail = formRef.current?.getFieldValue('email');
+        /*  const getEmail = formRef.current?.getFieldValue('email');
 
-        const getPassword = formRef.current?.getFieldValue('password');
+        const getPassword = formRef.current?.getFieldValue('password'); */
 
-        signIn(getEmail, getPassword);
+        await signIn({
+          email: data.email,
+          password: data.password,
+        });
+        history.push('/landing');
       } catch (err) {
-        const errors = getValidationErrors(err);
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
 
-        formRef.current?.setErrors(errors);
+          formRef.current?.setErrors(errors);
+        }
+        addToast({
+          type: 'error',
+          title: 'Erro na autenticação',
+          description: ' Ocorreu um erro ao fazer login, cheque as credenciais',
+        });
       }
     },
-    [signIn],
+    [signIn, history, addToast],
   );
 
   return (
@@ -107,24 +105,16 @@ const SignIn: React.FC = () => {
                 name="password"
                 label="Senha"
                 id="password"
-                placeholder="sua senha"
+                placeholder="Senha"
                 type="password"
               />
             </InputContainer>
             <Footer>
-              <div>
-                <input
-                  onChange={handleToggleRemember}
-                  type="checkbox"
-                  name="remember"
-                />
-                <label htmlFor="remember">Lembrar</label>
-              </div>
               <Link to="/signup" className="signup-button">
                 <label>Esqueceu sua senha?</label>
               </Link>
             </Footer>
-            <Button type="submit">Login</Button>
+            <Button type="submit">Entrar</Button>
           </Form>
         </LoginForm>
       </LoginContent>

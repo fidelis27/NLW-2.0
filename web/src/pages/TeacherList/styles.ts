@@ -8,7 +8,7 @@ export const Container = styled.div`
     max-width: 100%;
     main {
       padding: 3.2rem 0;
-      max-width: 740px;
+      max-width: 940px;
       margin: 0 auto;
     }
   }
@@ -44,7 +44,7 @@ export const Block = styled.div`
     input,
     select,
     button {
-      margin-top: 0;
+      /*   margin-top: 0; */
       padding: 0;
     }
   }

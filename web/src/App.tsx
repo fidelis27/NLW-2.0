@@ -1,16 +1,18 @@
 import React from 'react';
 import './assets/styles/global.css';
-import { AuthProvider } from './contexts/auth';
+import AppProvider from './hooks';
 
 import Routes from './routes';
 
 const App: React.FC = () => {
   return (
-    <AuthProvider>
-      <div className="App">
-        <Routes />
-      </div>
-    </AuthProvider>
+    <>
+      <AppProvider>
+        <div className="App">
+          <Routes />
+        </div>
+      </AppProvider>
+    </>
   );
 };
 

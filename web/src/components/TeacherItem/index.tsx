@@ -1,7 +1,7 @@
 import React from 'react';
 
 import whatsapp from '../../assets/images/icons/whatsapp.svg';
-import './styles.css';
+import { Container, Footer } from './styles';
 import api from '../../services/api';
 
 export interface Teacher {
@@ -25,7 +25,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
     });
   }
   return (
-    <article className="teacher-item">
+    <Container>
       <header>
         <img src={teacher.avatar} alt={teacher.name} />
         <div>
@@ -34,7 +34,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
         </div>
       </header>
       <p>{teacher.bio}</p>
-      <footer>
+      <Footer>
         <p>
           Preço/hora
           <strong>R$ {teacher.cost}</strong>
@@ -48,8 +48,8 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
           <img src={whatsapp} alt="Whatsapp" />
           Entrar em contato
         </a>
-      </footer>
-    </article>
+      </Footer>
+    </Container>
   );
 };
 

@@ -92,17 +92,4 @@ export const Footer = styled.footer`
     text-decoration: none;
     color: var(--color-text-complement);
   }
-
-  div {
-    margin-top: 2rem;
-    display: flex;
-    align-items: center;
-    input {
-      margin-right: 0.8rem;
-    }
-    label {
-      color: var(--color-text-in-primary);
-      font-weight: bold;
-    }
-  }
 `;

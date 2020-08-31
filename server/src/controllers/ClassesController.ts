@@ -27,10 +27,10 @@ export default class ClassesControler {
       .whereExists(function () {
         this.select('class_schedule.*')
           .from('class_schedule')
-          .whereRaw('`class_schedule`.`class_id`')
-          .whereRaw('`class_schedule`.`week_day` = ??', [Number(week_day)])
-          .whereRaw('`class_schedule`.`from` <= ??', [timeInMinutes])
-          .whereRaw('`class_schedule`.`to` > ??', [timeInMinutes]);
+          .join('classes', 'class_schedule.class_id', '=', 'classes.id')
+          .where('class_schedule.week_day', '=', Number(week_day))
+          .where('class_schedule.from', '<=', timeInMinutes)
+          .where('class_schedule.to', '>', timeInMinutes);
       })
       .where('classes.subject', '=', subject)
       .join('users', 'classes.user_id', '=', 'users.id')
@@ -42,28 +42,33 @@ export default class ClassesControler {
   async create(req: Request, res: Response) {
     const { name, avatar, whatsapp, bio, subject, cost, schedule } = req.body;
     const trx = await db.transaction();
+    console.log('aqui');
 
     try {
-      const insertUsersIds = await trx('users').insert({
-        name,
-        avatar,
-        whatsapp,
-        bio,
-      });
+      const insertUsersIds = await trx('users')
+        .insert({
+          name,
+          avatar,
+          whatsapp,
+          bio,
+        })
+        .returning('*');
 
       const user_id = insertUsersIds[0];
 
-      const insertedClassesIds = await trx('classes').insert({
-        subject,
-        cost,
-        user_id,
-      });
+      const insertedClassesIds = await trx('classes')
+        .insert({
+          subject,
+          cost,
+          user_id: user_id.id,
+        })
+        .returning('*');
 
       const class_id = insertedClassesIds[0];
 
       const classSchedule = schedule.map((scheduleItem: scheduleItem) => {
         return {
-          class_id,
+          class_id: class_id.id,
           week_day: scheduleItem.week_day,
           to: converHourToMinutes(scheduleItem.to),
           from: converHourToMinutes(scheduleItem.from),

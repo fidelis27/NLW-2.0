@@ -9,8 +9,6 @@ import { FiAlertCircle } from 'react-icons/fi';
 import { IconBaseProps } from 'react-icons';
 import { useField } from '@unform/core';
 
-import Tooltip from '../Tooltip';
-
 import { Container, InputLabel, ErrorMessage } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -49,6 +47,7 @@ const Input: React.FC<InputProps> = ({ label, name, icon: Icon, ...rest }) => {
         <label htmlFor={name}>{label}</label>
       </InputLabel>
       <input
+        data-testid="input"
         defaultValue={defaultValue}
         {...rest}
         ref={inputRef}

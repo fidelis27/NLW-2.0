@@ -5,8 +5,9 @@ import * as Yup from 'yup';
 import { FiAlertOctagon } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import PageHeader from '../../components/PageHeader';
+import { useToast } from '../../hooks/toast';
 
-import './styles.css';
+import { Container, Footer } from './styles';
 import Input from '../../components/Input';
 import Textarea from '../../components/Textarea';
 import Select from '../../components/Select';
@@ -26,6 +27,7 @@ interface DataProps {
 const TechForm: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
+  const { addToast } = useToast();
 
   const [scheduleItems, setScheduleItems] = useState([
     { week_day: 0, from: '', to: '' },
@@ -47,51 +49,56 @@ const TechForm: React.FC = () => {
 
       return scheduleItem;
     });
-    console.log(updatedScheduleItems);
 
     return setScheduleItems(updatedScheduleItems);
   }
 
-  const handleCreateClass = useCallback(async (data: DataProps) => {
-    const { name, avatar, whatsapp, bio, subject, cost } = data;
+  const handleCreateClass = useCallback(
+    async (data: DataProps) => {
+      const { name, avatar, whatsapp, bio, subject, cost } = data;
 
-    try {
-      formRef.current?.setErrors({});
-      const schema = Yup.object().shape({
-        name: Yup.string().required('Campo "Name" é obrigatório'),
-        avatar: Yup.string().required('Campo "Avatar" é obrigatório'),
-        whatsapp: Yup.string().required('Campo "whatsapp" é obrigatório'),
-        bio: Yup.string().required('Campo "bio" é obrigatório'),
-        subject: Yup.string().required('Campo "subject" é obrigatório'),
-        cost: Yup.string().required('Campo "cost" é obrigatório'),
-      });
-
-      await schema.validate(data, {
-        abortEarly: false,
-      });
-
-      api
-        .post('classes', {
-          name,
-          avatar,
-          whatsapp,
-          bio,
-          subject,
-          cost: Number(cost),
-          schedule: scheduleItems,
-        })
-        .then(() => {
-          alert('All done!');
-          history.push('/');
+      try {
+        formRef.current?.setErrors({});
+        const schema = Yup.object().shape({
+          name: Yup.string().required('Campo "Name" é obrigatório'),
+          avatar: Yup.string().required('Campo "Avatar" é obrigatório'),
+          whatsapp: Yup.string().required('Campo "whatsapp" é obrigatório'),
+          bio: Yup.string().required('Campo "bio" é obrigatório'),
+          subject: Yup.string().required('Campo "subject" é obrigatório'),
+          cost: Yup.string().required('Campo "cost" é obrigatório'),
         });
-    } catch (err) {
-      const errors = getValidationErrors(err);
-      formRef.current?.setErrors(errors);
-    }
-  }, []);
+
+        await schema.validate(data, {
+          abortEarly: false,
+        });
+
+        api
+          .post('classes', {
+            name,
+            avatar,
+            whatsapp,
+            bio,
+            subject,
+            cost: Number(cost),
+            schedule: scheduleItems,
+          })
+          .then(() => {
+            addToast({
+              type: 'success',
+              title: 'Cadastro realizado com sucesso',
+            });
+            history.push('/');
+          });
+      } catch (err) {
+        const errors = getValidationErrors(err);
+        formRef.current?.setErrors(errors);
+      }
+    },
+    [addToast, history, scheduleItems],
+  );
 
   return (
-    <div id="page-teacher-form" className="container">
+    <Container id="page-teacher-form">
       <PageHeader
         title="Que incrível que você quer dar aula"
         description="O primeiro passo é preencher esse formulário de inscrição"
@@ -139,7 +146,8 @@ const TechForm: React.FC = () => {
                   label="Dia da semana"
                   value={scheduleItem.week_day}
                   onChange={(e) =>
-                    setScheduleItemValue(index, 'week_day', e.target.value)}
+                    setScheduleItemValue(index, 'week_day', e.target.value)
+                  }
                   options={[
                     { value: '0', label: 'Domingo' },
                     { value: '1', label: 'Segunda-feira' },
@@ -157,7 +165,8 @@ const TechForm: React.FC = () => {
                   type="time"
                   value={scheduleItem.from}
                   onChange={(e) =>
-                    setScheduleItemValue(index, 'from', e.target.value)}
+                    setScheduleItemValue(index, 'from', e.target.value)
+                  }
                 />
 
                 <Input
@@ -173,17 +182,17 @@ const TechForm: React.FC = () => {
             ))}
           </fieldset>
 
-          <footer>
+          <Footer>
             <p>
               <FiAlertOctagon color="#ac495b" size={30} />
               Importante! <br />
               Preencha todos os dados
             </p>
             <button type="submit">Salvar cadastro</button>
-          </footer>
+          </Footer>
         </Form>
       </main>
-    </div>
+    </Container>
   );
 };
 

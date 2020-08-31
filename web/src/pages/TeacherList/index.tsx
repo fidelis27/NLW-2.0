@@ -9,6 +9,7 @@ import Input from '../../components/Input';
 import Select from '../../components/Select';
 import api from '../../services/api';
 import getValidationErrors from '../../utils/getValidationErrors';
+import { useToast } from '../../hooks/toast';
 
 interface DataProps {
   subject: string;
@@ -18,40 +19,51 @@ interface DataProps {
 
 const TeacherList: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const { addToast } = useToast();
 
   const [teachers, setTeachers] = useState([]);
 
-  const searchTeachers = useCallback(async (data: DataProps) => {
-    const { subject, week_day, time } = data;
+  const searchTeachers = useCallback(
+    async (data: DataProps) => {
+      const { subject, week_day, time } = data;
 
-    try {
-      formRef.current?.setErrors({});
-      const schema = Yup.object().shape({
-        subject: Yup.string().required('Matéria é obrigatório'),
-        week_day: Yup.string().required('Dia da semana é obrigatório'),
-        time: Yup.string().required('Hora é obrigatório'),
-      });
+      try {
+        formRef.current?.setErrors({});
+        const schema = Yup.object().shape({
+          subject: Yup.string().required('Matéria é obrigatório'),
+          week_day: Yup.string().required('Dia da semana é obrigatório'),
+          time: Yup.string().required('Hora é obrigatório'),
+        });
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
-    } catch (err) {
-      const errors = getValidationErrors(err);
+        await schema.validate(data, {
+          abortEarly: false,
+        });
 
-      formRef.current?.setErrors(errors);
-    }
+        const response = await api.get('classes', {
+          params: {
+            subject,
+            week_day,
+            time,
+          },
+        });
 
-    const response = await api.get('classes', {
-      params: {
-        subject,
-        week_day,
-        time,
-      },
-    });
-    console.log(response.data);
+        setTeachers(response.data);
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
 
-    setTeachers(response.data);
-  }, []);
+          formRef.current?.setErrors(errors);
+        }
+        addToast({
+          type: 'error',
+          title: 'Erro na servidor',
+          description:
+            ' Ocorreu um erro ao fazer a solicitação, tente novamente',
+        });
+      }
+    },
+    [addToast],
+  );
 
   return (
     <Container>
@@ -94,9 +106,13 @@ const TeacherList: React.FC = () => {
       </PageHeader>
 
       <main>
-        {teachers.map((teacher: Teacher) => {
-          return <TeacherItem key={teacher.id} teacher={teacher} />;
-        })}
+        {teachers.length ? (
+          teachers.map((teacher: Teacher) => {
+            return <TeacherItem key={teacher.id} teacher={teacher} />;
+          })
+        ) : (
+          <h1>Não existem dados a serem exibidos!</h1>
+        )}
       </main>
     </Container>
   );

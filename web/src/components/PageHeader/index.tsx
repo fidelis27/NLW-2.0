@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import logoImg from '../../assets/images/logo.svg';
 
-import './styles.css';
+import { Container, Topbar, HeaderContent } from './styles';
 
 interface PageHeaderProps {
   title: string;
@@ -16,21 +16,21 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   description,
 }) => {
   return (
-    <header className="page-header">
-      <div className="top-bar-container">
+    <Container className="page-header">
+      <Topbar className="top-bar-container">
         <Link to="/">
           <FaArrowLeft size={24} color="#565656" /> voltar
         </Link>
 
         <img src={logoImg} alt="Proffy" />
-      </div>
+      </Topbar>
 
-      <div className="header-content">
+      <HeaderContent className="header-content">
         <strong>{title}</strong>
         {description && <p>{description}</p>}
         {children}
-      </div>
-    </header>
+      </HeaderContent>
+    </Container>
   );
 };
 

@@ -6,7 +6,7 @@ import logoImg from '../../assets/images/logo.svg';
 
 import api from '../../services/api';
 
-import './styles.css';
+import { Container, Header, Button, Connections } from './styles';
 
 const ErrorAuth: React.FC = () => {
   const [totalConnections, setTotalConnections] = useState(0);
@@ -20,24 +20,22 @@ const ErrorAuth: React.FC = () => {
   }, []);
 
   return (
-    <div id="page-login-landing">
-      <div id="page-login-landing-content" className="container">
-        <div className="login-logo">
-          <img src={logoImg} alt="Proffy" />
-          <h2>Você precisa estar logado para acessar está página!</h2>
-        </div>
+    <Container>
+      <Header className="login-logo">
+        <img src={logoImg} alt="Proffy" />
+        <h2>Você precisa estar logado para acessar está página!</h2>
+      </Header>
 
-        <div className="login-buttons-container">
-          <Link to="/" className="study">
-            Login
-          </Link>
-        </div>
-        <span className="login-total-connections">
-          Total de {totalConnections} conexões já realizadas
-          <FaHeart size={20} color="#ac495b" />
-        </span>
-      </div>
-    </div>
+      <Button>
+        <Link to="/" className="study">
+          Login
+        </Link>
+      </Button>
+      <Connections>
+        Total de {totalConnections} conexões já realizadas
+        <FaHeart size={20} color="#ac495b" />
+      </Connections>
+    </Container>
   );
 };
 

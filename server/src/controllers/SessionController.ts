@@ -26,17 +26,17 @@ export default class SessionController {
     }
 
     if (!(await checkPassword(password, user[0].password_hash))) {
-      console.log(await checkPassword(password, user[0].password_hash));
       return res.status(401).json({ error: 'Password does not match' });
     }
 
-    const { id, username } = user[0];
+    const { id, name, avatar } = user[0];
 
     return res.json({
       user: {
         id,
-        username,
+        name,
         email,
+        avatar,
       },
       token: jwt.sign({ id }, authConfig.secret, {
         expiresIn: authConfig.expiresIn,

@@ -81,10 +81,28 @@ export const Header = styled.header`
 `;
 
 export const UserInfo = styled.div`
+  display: flex;
+  align-items: center;
   img {
-    width: 4rem;
-    height: 4rem;
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
+  }
+
+  a {
+    margin-left: 1.2rem;
+    text-decoration: none;
+    color: var(--color-text-in-primary);
+    p {
+      font-size: 1.6rem;
+    }
+    span {
+      display: block;
+      margin-top: 0;
+      font-weight: 700;
+      font-size: 2rem;
+      line-height: 2.2rem;
+    }
   }
 `;
 

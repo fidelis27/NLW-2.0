@@ -1,6 +1,7 @@
 import React, { SelectHTMLAttributes, useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
-import './styles.css';
+
+import { SelectBlock } from './styles';
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   name: string;
@@ -22,7 +23,7 @@ const Select: React.FC<SelectProps> = ({ options, label, name, ...rest }) => {
     });
   }, [fieldName, registerField]);
   return (
-    <div className="select-block">
+    <SelectBlock className="select-block">
       <label htmlFor={name}>{label}</label>
       <select id="name" {...rest} ref={inputRef} defaultValue={defaultValue}>
         <option value="">Selecione uma opção</option>
@@ -35,7 +36,7 @@ const Select: React.FC<SelectProps> = ({ options, label, name, ...rest }) => {
         })}
       </select>
       <span>{error}</span>
-    </div>
+    </SelectBlock>
   );
 };
 

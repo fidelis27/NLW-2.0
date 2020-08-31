@@ -67,7 +67,7 @@ export const SubTitle = styled.label`
 
 export const Logo = styled.div`
   width: 100%;
-  margin-top: 3rem;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -75,10 +75,16 @@ export const Logo = styled.div`
   background-color: var(--color-primary);
   img {
     padding-top: 3rem;
-    width: 90%;
+    width: 50%;
+    @media (min-width: 700px) {
+      width: 90%;
+    }
   }
   h2 {
     color: var(--color-text-in-primary);
-    padding: 3rem;
+    padding: 1.5rem;
+    @media (min-width: 700px) {
+      padding: 3rem;
+    }
   }
 `;
