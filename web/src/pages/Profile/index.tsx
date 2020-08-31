@@ -134,7 +134,7 @@ const Profile: React.FC = () => {
         <Title>Profile</Title>
         <AvatarInput>
           <img
-            src={`http://localhost:3333/image/${user.avatar}`}
+            src={`https://api-proffy-version-one.herokuapp.com/image/${user.avatar}`}
             alt={user.name}
           />
           <label htmlFor="avatar">

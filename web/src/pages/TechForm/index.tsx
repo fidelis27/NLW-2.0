@@ -87,7 +87,7 @@ const TechForm: React.FC = () => {
               type: 'success',
               title: 'Cadastro realizado com sucesso',
             });
-            history.push('/');
+            history.push('/landing');
           });
       } catch (err) {
         const errors = getValidationErrors(err);
