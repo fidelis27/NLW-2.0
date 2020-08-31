@@ -27,32 +27,30 @@
 
 # Mobile version web application screens
 
-# Mobile version web application screens
-
 ## Signin
 
-<img src="https://user-images.githubusercontent.com/45233696/91775483-87eea180-ebc1-11ea-9072-a022a2298c8c.jpg" width="50%" height="50%">
+<img src="https://user-images.githubusercontent.com/45233696/91775483-87eea180-ebc1-11ea-9072-a022a2298c8c.jpg" width="30%" height="30%">
 
 ## Signup
 
 
-<img src="https://user-images.githubusercontent.com/45233696/91776200-44953280-ebc3-11ea-8a76-90d475410e3c.jpg" width="50%" height="50%">
+<img src="https://user-images.githubusercontent.com/45233696/91776200-44953280-ebc3-11ea-8a76-90d475410e3c.jpg" width="30%" height="30%">
 
 ## Landing
 
-<img src="https://user-images.githubusercontent.com/45233696/91775482-86bd7480-ebc1-11ea-87a7-88f042975ad4.jpg" width="50%" height="50%">
+<img src="https://user-images.githubusercontent.com/45233696/91775482-86bd7480-ebc1-11ea-87a7-88f042975ad4.jpg" width="30%" height="30%">
 
 ## Profile
 
-<img src="https://user-images.githubusercontent.com/45233696/91775484-87eea180-ebc1-11ea-9783-0027e7348981.jpg" width="50%" height="50%">
+<img src="https://user-images.githubusercontent.com/45233696/91775484-87eea180-ebc1-11ea-9783-0027e7348981.jpg" width="30%" height="30%">
 
 ## List of available teachers
 
-<img src="https://user-images.githubusercontent.com/45233696/91775488-88873800-ebc1-11ea-85f2-cb9754d83252.jpg" width="50%" height="50%">
+<img src="https://user-images.githubusercontent.com/45233696/91775488-88873800-ebc1-11ea-85f2-cb9754d83252.jpg" width="30%" height="30%">
 
 ## Teacher registration
 
-<img src="https://user-images.githubusercontent.com/45233696/91775486-88873800-ebc1-11ea-9a25-525d66e559d7.jpg" width="50%" height="50%">
+<img src="https://user-images.githubusercontent.com/45233696/91775486-88873800-ebc1-11ea-9a25-525d66e559d7.jpg" width="30%" height="30%">
 
 
 
