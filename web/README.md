@@ -1,26 +1,26 @@
 # Web application screens
 
-## signin
+## Signin
 
 ![signin](https://user-images.githubusercontent.com/45233696/91774678-c3886c00-ebbf-11ea-8d0c-30db0e80bb6c.png)
 
-## signup
+## Signup
 
 ![signup](https://user-images.githubusercontent.com/45233696/91774534-6987a680-ebbf-11ea-9cda-ae183300bae6.png)
 
-## landing
+## Landing
 
 ![landing](https://user-images.githubusercontent.com/45233696/91774530-68567980-ebbf-11ea-98f7-4e327560bf55.png)
 
-## profile
+## Profile
 
 ![profile](https://user-images.githubusercontent.com/45233696/91774533-6987a680-ebbf-11ea-9af6-c4ef458c978b.png)
 
-## list of available teachers
+## List of available teachers
 
 ![list form](https://user-images.githubusercontent.com/45233696/91774532-68ef1000-ebbf-11ea-8e0c-998dedd14a2b.png)
 
-## teacher registration
+## Teacher registration
 
 ![techform](https://user-images.githubusercontent.com/45233696/91774535-6a203d00-ebbf-11ea-94be-52d3dac98037.png)
 
