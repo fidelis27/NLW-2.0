@@ -1,3 +1,61 @@
+# Web application screens
+
+## signin
+
+![signin](https://user-images.githubusercontent.com/45233696/91774678-c3886c00-ebbf-11ea-8d0c-30db0e80bb6c.png)
+
+## signup
+
+![signup](https://user-images.githubusercontent.com/45233696/91774534-6987a680-ebbf-11ea-9cda-ae183300bae6.png)
+
+## landing
+
+![landing](https://user-images.githubusercontent.com/45233696/91774530-68567980-ebbf-11ea-98f7-4e327560bf55.png)
+
+## profile
+
+![profile](https://user-images.githubusercontent.com/45233696/91774533-6987a680-ebbf-11ea-9af6-c4ef458c978b.png)
+
+## list of available teachers
+
+![list form](https://user-images.githubusercontent.com/45233696/91774532-68ef1000-ebbf-11ea-8e0c-998dedd14a2b.png)
+
+## teacher registration
+
+![techform](https://user-images.githubusercontent.com/45233696/91774535-6a203d00-ebbf-11ea-94be-52d3dac98037.png)
+
+
+# Mobile version web application screens
+
+# Mobile version web application screens
+
+## Signin
+
+<img src="https://user-images.githubusercontent.com/45233696/91775483-87eea180-ebc1-11ea-9072-a022a2298c8c.jpg" width="50%" height="50%">
+
+## Signup
+
+
+<img src="https://user-images.githubusercontent.com/45233696/91776200-44953280-ebc3-11ea-8a76-90d475410e3c.jpg" width="50%" height="50%">
+
+## Landing
+
+<img src="https://user-images.githubusercontent.com/45233696/91775482-86bd7480-ebc1-11ea-87a7-88f042975ad4.jpg" width="50%" height="50%">
+
+## Profile
+
+<img src="https://user-images.githubusercontent.com/45233696/91775484-87eea180-ebc1-11ea-9783-0027e7348981.jpg" width="50%" height="50%">
+
+## List of available teachers
+
+<img src="https://user-images.githubusercontent.com/45233696/91775488-88873800-ebc1-11ea-85f2-cb9754d83252.jpg" width="50%" height="50%">
+
+## Teacher registration
+
+<img src="https://user-images.githubusercontent.com/45233696/91775486-88873800-ebc1-11ea-9a25-525d66e559d7.jpg" width="50%" height="50%">
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

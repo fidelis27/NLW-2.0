@@ -45,7 +45,7 @@ An online and completely free event that will help you take the next step in you
 Online teaching platform made with React.js and React Native using Typescript during the NLW (Next Level Week) #02
 
 <h1 align="center">
-    <img alt="Example" title="Example" src=".github/proffy2.jpg" width="500px" />
+    <img alt="Example" title="Example" src=".github/landing.png" width="500px" />
 </h1>
 
 
@@ -63,26 +63,7 @@ This project was developed with the following technologies:
 
 To access the layout use [Figma](https://www.figma.com/file/c1nWc0Qxoxxo2BuIJgUvhD/Proffy-Mobile-2.0-Copy).
 
-## :information_source: How To Use
 
-To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js][nodejs] + [Yarn][yarn] installed on your computer.
-
-From your command line:
-
-### Install API In progress.. :construction:
-```bash
-# Clone this repository
-$ git clone https://github.com/fidelis27/NLW-2.0
-
-# Go into the repository
-$ cd NLW-2.0/server
-
-# Install dependencies
-$ yarn install
-
-# Run
-$ yarn start
-```
 
 ## 🤔 How to contribute
 

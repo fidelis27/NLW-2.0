@@ -65,7 +65,9 @@ const SignIn: React.FC = () => {
           const errors = getValidationErrors(err);
 
           formRef.current?.setErrors(errors);
+          return;
         }
+
         addToast({
           type: 'error',
           title: 'Erro na autenticação',
@@ -87,7 +89,7 @@ const SignIn: React.FC = () => {
         <LoginForm>
           <Form onSubmit={handleSignIn} ref={formRef}>
             <Header>
-              <h2>Fazer Login</h2>
+              <h2>Fazer Logon</h2>
               <Link to="/signup" className="signup-button">
                 <label>Inscrever-se</label>
               </Link>

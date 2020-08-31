@@ -46,12 +46,20 @@ const SignUp: React.FC = () => {
           email: data.email,
           password: data.password,
         });
+        addToast({
+          type: 'success',
+          title: 'Cadastro realizado!',
+          description: 'Você já pode fazer seu logon no Proffy!',
+        });
 
         history.push('/');
       } catch (err) {
-        const errors = getValidationErrors(err);
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
 
-        formRef.current?.setErrors(errors);
+          formRef.current?.setErrors(errors);
+          return;
+        }
         addToast({
           type: 'error',
           title: 'Erro no Cadastro',
