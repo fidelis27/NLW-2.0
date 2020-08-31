@@ -45,7 +45,11 @@ const Landing: React.FC = () => {
       <Header>
         <UserInfo>
           <img
-            src={`https://api-proffy-version-one.herokuapp.com/image/${user.avatar}`}
+            src={
+              user.avatar
+                ? `https://api-proffy-version-one.herokuapp.com/image/${user.avatar}`
+                : 'https://aeealberta.org/wp-content/uploads/2018/10/profile.png'
+            }
             alt="profile"
           />
           <Link to="/profile">

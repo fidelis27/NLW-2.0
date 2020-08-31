@@ -134,8 +134,12 @@ const Profile: React.FC = () => {
         <Title>Profile</Title>
         <AvatarInput>
           <img
-            src={`https://api-proffy-version-one.herokuapp.com/image/${user.avatar}`}
-            alt={user.name}
+            src={
+              user.avatar
+                ? `https://api-proffy-version-one.herokuapp.com/image/${user.avatar}`
+                : 'https://aeealberta.org/wp-content/uploads/2018/10/profile.png'
+            }
+            alt="profile"
           />
           <label htmlFor="avatar">
             <FiCamera />
