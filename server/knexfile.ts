@@ -1,4 +1,5 @@
 import { resolve } from 'path';
+import 'dotenv/config';
 
 module.exports = {
   development: {
