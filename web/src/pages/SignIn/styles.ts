@@ -13,7 +13,7 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid var(--color-line-in-white);
-  margin-bottom: 2.4rem;
+  margin-bottom: 1.2rem;
   a {
     text-decoration: none;
     height: 0;
@@ -70,10 +70,10 @@ export const LoginForm = styled.div`
   form {
     background: var(--color-box-base);
     width: 100%;
-    max-width: 74rem;
+    max-width: 64rem;
     border-radius: 0.8rem;
     margin: -3.2rem auto 3.2rem;
-    padding: 2rem;
+    padding: 1.2rem;
     overflow: hidden;
   }
 `;
@@ -88,7 +88,7 @@ export const Footer = styled.footer`
   justify-content: space-between;
 
   a {
-    margin-top: 2rem;
+    margin-top: 1rem;
     text-decoration: none;
     color: var(--color-text-complement);
   }

@@ -20,7 +20,7 @@ export const Container = styled.div`
     padding: 4rem;
 
     @media (min-width: 700px) {
-      padding: 3rem;
+      padding: 2rem;
     }
     input {
       width: 100%;
@@ -46,7 +46,7 @@ export const Title = styled.label`
   font-weight: 600;
   font-size: 36px;
   line-height: 34px;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   color: var(--color-text-in-primary);
 `;
 
@@ -61,7 +61,7 @@ export const SubTitle = styled.label`
   font-weight: normal;
   font-size: 16px;
   line-height: 26px;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   color: var(--color-text-in-primary);
 `;
 
