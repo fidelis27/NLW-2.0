@@ -93,14 +93,14 @@ const Profile: React.FC = () => {
   );
 
   const handleAvatarChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
+    async (e: ChangeEvent<HTMLInputElement>) => {
       if (e.target.files) {
         const data = new FormData();
         data.append('name', 'thiago');
 
         data.append('image', e.target.files[0]);
 
-        api.patch('/accounts', data).then((response) => {
+        await api.patch('/accounts', data).then((response) => {
           const { avatar } = response.data;
 
           if (response.data) {

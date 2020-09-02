@@ -135,8 +135,11 @@ export default class UserController {
       return res.status(201).json(ImageUpdte);
     }
     await trx('files').insert(file);
+    const ImageUpdte = await trx('accounts')
+      .where('accounts.id', '=', req.userId)
+      .first();
     trx.commit();
 
-    return res.status(201).json();
+    return res.status(201).json(ImageUpdte);
   }
 }
