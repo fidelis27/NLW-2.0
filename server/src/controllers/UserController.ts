@@ -122,8 +122,7 @@ export default class UserController {
     await trx('accounts')
       .update({
         avatar: fileName,
-      })
-      .where('accounts.id', '=', req.userId);
+      }).where('accounts.id', '=', req.userId);
 
     if (existsFile) {
       await trx('files').update(file).where('accounts_id', '=', req.userId);
